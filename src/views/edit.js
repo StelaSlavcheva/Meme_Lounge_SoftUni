@@ -29,12 +29,10 @@ export async function editPage(ctx) {
     async function onSubmit(event) {
         event.preventDefault();
         const formData = new FormData(event.target);
-
-
         const title = formData.get('title');
         const description = formData.get('description');
         const imageUrl = formData.get('imageUrl');
-        
+
         try {
 
             if (!title || !description || !imageUrl) {
@@ -45,13 +43,9 @@ export async function editPage(ctx) {
                 description,
                 imageUrl
             });
-
             ctx.page.redirect('/details/' + memeId);
-
         } catch (err) {
             notify(err.message);
         }
-
-
     }
 }

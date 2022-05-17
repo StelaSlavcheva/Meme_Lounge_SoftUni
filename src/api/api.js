@@ -2,6 +2,7 @@ export const settings = {
   host: "",
 };
 
+//universal request method
 async function request(url, options) {
 
   try {
@@ -24,6 +25,7 @@ async function request(url, options) {
   }
 }
 
+//universal options method
 function getOptions(method = "get", body) {
   const options = {
     method,
@@ -41,6 +43,7 @@ function getOptions(method = "get", body) {
   return options;
 }
 
+//decorator functions for all REST methods(CRUD operations)
 export async function get(url) {
   return await request(url, getOptions());
 }
@@ -55,6 +58,7 @@ export async function del(url) {
   return await request(url, getOptions("delete"));
 }
 
+//authentication functions
 export async function login(email, password) {
   const result = await post(settings.host + "/users/login", {
     email,
